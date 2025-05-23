@@ -30,13 +30,15 @@ RUN addgroup --system $APPLICATION_USER && adduser --system $APPLICATION_USER --
 
 # 创建应用目录
 RUN mkdir /app && chown -R $APPLICATION_USER /app
+RUN mkdir /app/config && chown -R $APPLICATION_USER /app/config
 
 USER $APPLICATION_USER
 COPY --chown=$APPLICATION_USER jd_server-1.0-SNAPSHOT.jar /app/app.jar
+COPY --chown=$APPLICATION_USER application.yml /app/config/application.yml
 
 WORKDIR /app
 
 USER $APPLICATION_USER
 
 EXPOSE 5607
-ENTRYPOINT [ "java", "-jar", "/app/app.jar" ]
+ENTRYPOINT ["java", "-jar", "app.jar", "--spring.config.location=file:/app/config/application.yml"]
