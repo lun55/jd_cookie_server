@@ -1,0 +1,20 @@
+server:
+  port: 5607
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: jd-service
+
+  datasource:
+    url: jdbc:mysql://xxxxxxx:3306/jd_cookie?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: xxxxxxx
+    password: xxxxxxx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+ql:
+  address: http://xxxxxxx:5600
+  old-version: false
+  username: xxxxxxx
+  password: xxxxxxx
+  token: xxxxxxx
